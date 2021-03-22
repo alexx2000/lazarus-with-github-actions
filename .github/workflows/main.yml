@@ -29,6 +29,6 @@ jobs:
     - name: Build the Unit Tests Application
       run: lazbuild "tests/testconsoleapplication.lpi"
     - name: Test
-      run: sftp   
+      run: git rev-list --count HEAD
     - name: Run the Unit Tests Application
       run: bin/testconsoleapplication "--all" "--format=plain"
