@@ -26,9 +26,11 @@ jobs:
         include-packages: "Synapse 40.1"
     - name: Build the Main Application
       run: lazbuild "src/lazaruswithgithubactions.lpi"
-    - name: Build the Unit Tests Application
-      run: lazbuild "tests/testconsoleapplication.lpi"
-    - name: Test
-      run: git rev-list --count HEAD
-    - name: Run the Unit Tests Application
-      run: bin/testconsoleapplication "--all" "--format=plain"
+    - name: Deploy to Staging server
+      uses: easingthemes/ssh-deploy@main
+      env:
+        SSH_PRIVATE_KEY: ${{ secrets.SERVER_SSH_KEY }}
+        SOURCE: "src/*.lpi"
+        REMOTE_HOST: ${{ secrets.REMOTE_HOST }}
+        REMOTE_USER: ${{ secrets.REMOTE_USER }}
+        TARGET: ${{ secrets.REMOTE_TARGET }}
