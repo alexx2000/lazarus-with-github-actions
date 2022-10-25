@@ -15,7 +15,7 @@ jobs:
     strategy:
       matrix:
 #        operating-system: [ubuntu-18.04,ubuntu-latest,windows-latest]
-        operating-system: [windows-latest]
+        operating-system: [macos-latest]
         lazarus-versions: [stable]
     steps:
     - uses: actions/checkout@v2
