@@ -19,18 +19,17 @@ jobs:
         lazarus-versions: [stable]
     steps:
     - uses: actions/checkout@v2
-    - name: Install Lazarus
-      uses: gcarreno/setup-lazarus@v2.2.9
-      with:
-        lazarus-version: ${{ matrix.lazarus-versions }}
-        include-packages: "Synapse 40.1"
-    - name: Build the Main Application
-      run: lazbuild "src/lazaruswithgithubactions.lpi"
+#    - name: Install Lazarus
+#      uses: gcarreno/setup-lazarus@v2.2.9
+#      with:
+#        lazarus-version: ${{ matrix.lazarus-versions }}
+#        include-packages: "Synapse 40.1"
+#    - name: Build the Main Application
+#      run: lazbuild "src/lazaruswithgithubactions.lpi"
     - name: Deploy to Staging server
-      uses: easingthemes/ssh-deploy@main
+      run: 'echo "$SSH_PRIVATE_KEY" > $HOME/.ssh/id_ed25519 && sftp -b ./.github/update.txt $REMOTE_USER@$REMOTE_HOST'
       env:
         SSH_PRIVATE_KEY: ${{ secrets.SERVER_SSH_KEY }}
-        SOURCE: "src/*.lpi"
         REMOTE_HOST: ${{ secrets.REMOTE_HOST }}
         REMOTE_USER: ${{ secrets.REMOTE_USER }}
         TARGET: ${{ secrets.REMOTE_TARGET }}
