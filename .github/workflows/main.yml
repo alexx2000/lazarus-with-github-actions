@@ -1,4 +1,4 @@
-name: build-test
+name: build-snapshot
 
 on:
   pull_request:
@@ -7,14 +7,16 @@ on:
     - "README.md"
     branches:
       - master
-      - releases/*
+
+concurrency: 
+  group: ${{ github.ref }}
+  cancel-in-progress: true
 
 jobs:
   build:
     runs-on: ${{ matrix.operating-system }}
     strategy:
       matrix:
-#        operating-system: [ubuntu-18.04,ubuntu-latest,windows-latest]
         operating-system: [macos-latest]
         lazarus-versions: [stable]
     steps:
