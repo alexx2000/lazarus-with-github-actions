@@ -1,0 +1,3 @@
+cd /home/project-web/doublecmd/htdocs/snapshots
+put src/resourceunit.pas
+quit

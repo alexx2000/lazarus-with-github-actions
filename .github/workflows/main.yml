@@ -27,7 +27,7 @@ jobs:
 #    - name: Build the Main Application
 #      run: lazbuild "src/lazaruswithgithubactions.lpi"
     - name: Deploy to Staging server
-      run: 'echo "$SSH_PRIVATE_KEY" > hello && chmod 0600 hello && sftp -o StrictHostKeyChecking=no -i hello -b ./.github/upload.txt $REMOTE_USER@$REMOTE_HOST'
+      run: ./.github/scripts/upload.sh
       env:
         SSH_PRIVATE_KEY: ${{ secrets.SERVER_SSH_KEY }}
         REMOTE_HOST: ${{ secrets.REMOTE_HOST }}
