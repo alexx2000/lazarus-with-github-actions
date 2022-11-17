@@ -30,7 +30,7 @@ jobs:
       with:
             repository: 'fpc/Lazarus'
     - name: List directory
-      run: ls -la
+      run: make install
     - name: Build the Main Application
       run: fpc -h
 
