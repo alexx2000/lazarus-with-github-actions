@@ -29,6 +29,9 @@ jobs:
             repository: 'fpc/Lazarus'
     - name: Install Lazarus
       run: make all install
+    - run: mkdir -p /etc/lazarus
+    - run: cp tools/install/macosx/environmentoptions.xml /etc/lazarus/environmentoptions.xml
+    - run: sed -i -e "s|_PPCARCH_|fpc|g; s|/Developer/lazarus|/usr/local/share/lazarus|g" /etc/lazarus/environmentoptions.xml
     - name: Get application
       uses: actions/checkout@v2
     - name: List directory
