@@ -25,6 +25,12 @@ jobs:
       uses: alexx2000/setup-fpc@master
       with:
         lazarus-version: ${{ matrix.lazarus-versions }}
+    - name: Install Lazarus
+      uses: actions/checkout@v3
+      with:
+            repository: 'fpc/Lazarus'
+    - name: List directory
+      run: ls -la
     - name: Build the Main Application
-      run: fpc -v
+      run: fpc -h
 
