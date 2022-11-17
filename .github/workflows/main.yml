@@ -22,7 +22,6 @@ jobs:
     steps:
     - uses: alexx2000/setup-fpc@master
       with:
-        with-cache: false
         lazarus-version: ${{ matrix.lazarus-versions }}
     - name: Get Lazarus
       uses: actions/checkout@v3
