@@ -20,19 +20,20 @@ jobs:
         operating-system: [macos-latest]
         lazarus-versions: [stable]
     steps:
-    - uses: actions/checkout@v3
+    - uses: alexx2000/setup-fpc@master
       with:
-            repository: 'alexx2000/setup-fpc'
-    - name: Install Free Pascal
-      uses: ./
-      with:
+        with-cache: false
         lazarus-version: ${{ matrix.lazarus-versions }}
-    - name: Install Lazarus
+    - name: Get Lazarus
       uses: actions/checkout@v3
       with:
             repository: 'fpc/Lazarus'
-    - name: List directory
+    - name: Install Lazarus
       run: make all install
+    - name: Get application
+      uses: actions/checkout@v2
+    - name: List directory
+      run: ls -la  
     - name: Build the Main Application
-      run: fpc -h
+      run: lazbuild -v
 
