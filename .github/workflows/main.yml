@@ -20,18 +20,9 @@ jobs:
         operating-system: [macos-latest]
         lazarus-versions: [stable]
     steps:
-    - uses: alexx2000/setup-fpc@master
-      with:
-        lazarus-version: ${{ matrix.lazarus-versions }}
-    - name: Get Lazarus
-      uses: actions/checkout@v3
-      with:
-            repository: 'fpc/Lazarus'
-    - name: Install Lazarus
-      run: make all install
-    - run: mkdir -p /etc/lazarus
-    - run: cp tools/install/macosx/environmentoptions.xml /etc/lazarus/environmentoptions.xml
-    - run: sed -i -e "s|_PPCARCH_|fpc|g; s|/Developer/lazarus|/usr/local/share/lazarus|g" /etc/lazarus/environmentoptions.xml
+    - run: sudo mkdir -p /etc/lazarus
+    - run: sudo cp tools/install/macosx/environmentoptions.xml /etc/lazarus/environmentoptions.xml
+    - run: sudo sed -i -e "s|_PPCARCH_|fpc|g; s|/Developer/lazarus|/usr/local/share/lazarus|g" /etc/lazarus/environmentoptions.xml
     - name: Get application
       uses: actions/checkout@v2
     - name: List directory
