@@ -21,17 +21,10 @@ jobs:
         lazarus-versions: [stable]
     steps:
     - uses: actions/checkout@v2
-#    - name: Install Lazarus
-#      uses: gcarreno/setup-lazarus@v2.2.9
-#      with:
-#        lazarus-version: ${{ matrix.lazarus-versions }}
-#        include-packages: "Synapse 40.1"
-#    - name: Build the Main Application
-#      run: lazbuild "src/lazaruswithgithubactions.lpi"
-    - name: Deploy to Staging server
-      run: ./.github/scripts/upload.sh
-      env:
-        SSH_PRIVATE_KEY: ${{ secrets.SERVER_SSH_KEY }}
-        REMOTE_HOST: ${{ secrets.REMOTE_HOST }}
-        REMOTE_USER: ${{ secrets.REMOTE_USER }}
-        TARGET: ${{ secrets.REMOTE_TARGET }}
+    - name: Install Free Pascal
+      uses: alexx2000/setup-fpc@master
+      with:
+        lazarus-version: ${{ matrix.lazarus-versions }}
+    - name: Build the Main Application
+      run: fpc -v
+
