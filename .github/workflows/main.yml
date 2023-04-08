@@ -29,4 +29,8 @@ jobs:
     - name: Compile aarch64
       run: cd /tmp/unrar && make clean lib CXXFLAGS+="-std=c++14 -DSILENT --target=arm64-apple-darwin" LDFLAGS+="-dylib --target=arm64-apple-darwin"
     - name: List directory
-      run: cd /tmp/unrar && ls -la
+      run: file /tmp/unrar/libunrar.so
+    - name: Compile x86_64
+      run: cd /tmp/unrar && make clean lib CXXFLAGS+="-std=c++14 -DSILENT --target=x86_64-apple-darwin" LDFLAGS+="-dylib --target=x86_64-apple-darwin"
+    - name: List directory
+      run: file /tmp/unrar/libunrar.so
