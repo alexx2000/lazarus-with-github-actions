@@ -26,7 +26,13 @@ jobs:
     - name: Get application
       uses: actions/checkout@v2
     - name: List directory
-      run: ls -la  
+      run: ls -la
+    - name: Test curl
+      run: curl https://doublecmd.sourceforge.io/test/pixmaps.txt -o /tmp/test-curl.txt
+    - name: Test wget
+      run: wget https://doublecmd.sourceforge.io/test/test.json -O /tmp/test-wget.txt
+    - name: List directory
+      run: cd /tmp && ls -la      
     - name: Build the Main Application
       run: lazbuild -v
 
