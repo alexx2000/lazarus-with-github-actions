@@ -34,3 +34,16 @@ jobs:
       run: cd /tmp/unrar && make clean lib CXXFLAGS+="-std=c++14 -DSILENT --target=x86_64-apple-darwin" LDFLAGS+="-dylib --target=x86_64-apple-darwin"
     - name: List directory
       run: file /tmp/unrar/libunrar.so
+      
+  build-win:
+    runs-on: ${{ matrix.operating-system }}
+    strategy:
+      matrix:
+        operating-system: [windows-latest]
+        lazarus-versions: [stable]
+    steps:
+    - name: Get application
+      uses: actions/checkout@v2
+    - name: Test bash
+      run: ls -la
+      shell: bash
