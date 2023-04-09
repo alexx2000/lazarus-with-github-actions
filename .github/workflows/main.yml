@@ -45,5 +45,7 @@ jobs:
     - name: Get application
       uses: actions/checkout@v2
     - name: Test bash
-      run: ls -la
+      run: echo "%SSH_PRIVATE_KEY%" > ssh_key
       shell: bash
+    - name: Test rights
+      run: Icacls ssh_key
