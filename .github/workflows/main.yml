@@ -47,7 +47,6 @@ jobs:
 
     - name: Deploy to snapshot server
       run: ./.github/scripts/upload_snapshot.cmd
-      shell: bash
       env:
         SSH_PRIVATE_KEY: ${{ secrets.SERVER_SSH_KEY }}
         REMOTE_HOST: ${{ secrets.REMOTE_HOST }}
