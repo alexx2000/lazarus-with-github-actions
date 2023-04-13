@@ -1,13 +1,14 @@
 #!/bin/bash
 
-@ECHO OFF
-
 echo $OSTYPE
 
 echo "$SSH_PRIVATE_KEY" > ssh_key
 
-#icacls.exe ssh_key //reset
-icacls.exe ssh_key //inheritance:r
+if [[ "$OSTYPE" == "msys" ]]; then
+  icacls.exe ssh_key //inheritance:r
+else
+  chmod 0600 ssh_key
+fi
 
 sftp -o StrictHostKeyChecking=no -i ssh_key $REMOTE_USER@$REMOTE_HOST <<END
 cd /home/project-web/doublecmd/htdocs/snapshots
