@@ -44,8 +44,11 @@ jobs:
     steps:
     - name: Get application
       uses: actions/checkout@v2
-    - name: Test bash
-      run: echo "%SSH_PRIVATE_KEY%" > ssh_key
+
+    - name: Deploy to snapshot server
+      run: ./.github/scripts/upload_snapshot.cmd
       shell: bash
-    - name: Test rights
-      run: Icacls ssh_key
+      env:
+        SSH_PRIVATE_KEY: ${{ secrets.SERVER_SSH_KEY }}
+        REMOTE_HOST: ${{ secrets.REMOTE_HOST }}
+        REMOTE_USER: ${{ secrets.REMOTE_USER }}
