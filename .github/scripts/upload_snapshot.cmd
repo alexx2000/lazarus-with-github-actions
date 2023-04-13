@@ -1,3 +1,5 @@
+#!/bin/bash
+
 @ECHO OFF
 echo "$SSH_PRIVATE_KEY" > ssh_key
 
