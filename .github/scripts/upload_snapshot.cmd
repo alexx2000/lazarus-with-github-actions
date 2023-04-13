@@ -2,8 +2,8 @@
 echo "$SSH_PRIVATE_KEY" > ssh_key
 
 icacls.exe ssh_key /reset
-#icacls.exe ssh_key /grant:r "$USERNAME:(R)"
 icacls.exe ssh_key /inheritance:r
+icacls.exe ssh_key
 
 echo "cd /home/project-web/doublecmd/htdocs/snapshots" > upload_snapshot.txt
 echo "lcd /var/tmp/doublecmd-release" >> upload_snapshot.txt
