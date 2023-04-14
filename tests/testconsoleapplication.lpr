@@ -1,6 +1,6 @@
 program TestConsoleApplication;
 
-{$mode objfpc}{$H+}
+{$mode objfpc} {$H+}
 
 uses
   Classes
