@@ -21,6 +21,4 @@ jobs:
         lazarus-versions: [stable]
     steps:
     - name: Test 7-Zip
-      run: "C:\\Program Files\\7-Zip\\7z.exe"
-
-
+      run: ./.github/scripts/test.bat
