@@ -20,7 +20,7 @@ jobs:
         operating-system: [windows-latest]
         lazarus-versions: [stable]
     steps:
-    - name: Install Free Pascal
-      uses: alexx2000/setup-fpc@win
-      with:
-        lazarus-version: "2.2.6"
+    - name: Test 7-Zip
+      run: "C:\\Program Files\\7-Zip\\7z.exe"
+
+
