@@ -42,9 +42,6 @@ jobs:
         operating-system: [windows-latest]
         lazarus-versions: [stable]
     steps:
-    - name: Get application
-      uses: actions/checkout@v2
-
     - name: Install Free Pascal
       uses: alexx2000/setup-fpc@win
       with:
