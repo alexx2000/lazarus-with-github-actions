@@ -20,5 +20,8 @@ jobs:
         operating-system: [windows-latest]
         lazarus-versions: [stable]
     steps:
+    - name: Checkout source
+      uses: actions/checkout@v2
+
     - name: Test 7-Zip
       run: ./.github/scripts/test.bat
