@@ -1,4 +1,4 @@
-name: build-snapshot-v1.1.x
+name: build-snapshot
 
 on:
   workflow_dispatch:
