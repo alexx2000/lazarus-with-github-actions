@@ -3,7 +3,7 @@ unit frmMainUnit;
 {$mode objfpc} {$H+}
 
 interface
-
+{ v1.2.x }
 uses
   Classes
 , SysUtils
