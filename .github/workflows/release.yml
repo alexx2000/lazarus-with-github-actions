@@ -26,4 +26,3 @@ jobs:
         file: src/frmmainunit.pas
         tag: ${{ github.ref }}
         overwrite: true
-        body: "This is my release text"
