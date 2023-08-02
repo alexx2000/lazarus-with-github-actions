@@ -3,7 +3,7 @@ name: build-release
 on:
   workflow_dispatch:
   release:
-    types: [released]
+    types: [released, prereleased]
 
 concurrency: 
   group: ${{ github.ref }}
