@@ -2,6 +2,7 @@ name: build-snapshot-v1.1.x
 
 on:
   workflow_dispatch:
+  push:
 
 concurrency: 
   group: ${{ github.ref }}
