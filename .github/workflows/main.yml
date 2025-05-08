@@ -11,6 +11,9 @@ jobs:
   build-mac:
     runs-on: macos-13
     steps:    
+    - name: Checkout source
+      uses: actions/checkout@v4 
+    
     - name: Prepare source
       run: sed -i -e "s|BOX_CLIENT_SECRET = '\*'|BOX_CLIENT_SECRET = '$BOX_CLIENT_SECRET'|g" src/resourceunit.pas
       env:
