@@ -1,27 +1,21 @@
 name: build-snapshot
 
 on:
-  pull_request:
-  push:
-    paths-ignore:
-    - "README.md"
-    branches:
-      - master
+  workflow_dispatch:
 
 concurrency: 
   group: ${{ github.ref }}
   cancel-in-progress: true
 
-jobs:     
-  build-win:
-    runs-on: ${{ matrix.operating-system }}
-    strategy:
-      matrix:
-        operating-system: [windows-latest]
-        lazarus-versions: [stable]
-    steps:
-    - name: Checkout source
-      uses: actions/checkout@v2
+jobs:
+  build-mac:
+    runs-on: macos-13
+    steps:    
+    - name: Prepare source
+      run: sed -i -e "s|BOX_CLIENT_SECRET = '\*'|BOX_CLIENT_SECRET = '$BOX_CLIENT_SECRET'|g" src/resourceunit.pas
+      env:
+        BOX_CLIENT_SECRET: ${{ secrets.BOX_CLIENT_SECRET }}
 
-    - name: Test 7-Zip
-      run: ./.github/scripts/test.bat
+    - name: Test
+      run: cat src/resourceunit.pas
+      
