@@ -10,4 +10,7 @@ resourcestring
 
 implementation
 
+const
+  BOX_CLIENT_SECRET = '*';
+
 end.
