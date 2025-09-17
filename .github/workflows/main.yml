@@ -9,7 +9,7 @@ concurrency:
 
 jobs:
   build-mac:
-    runs-on: macos-13
+    runs-on: macos-13-arm64
     steps:    
     - name: Checkout source
       uses: actions/checkout@v4 
@@ -20,7 +20,7 @@ jobs:
         BOX_CLIENT_SECRET: ${{ secrets.BOX_CLIENT_SECRET }}
 
     - name: Test
-      run: cat src/resourceunit.pas
+      run: uname -a
 
     - name: Deploy to snapshot server
       run: ./.github/scripts/upload.sh
