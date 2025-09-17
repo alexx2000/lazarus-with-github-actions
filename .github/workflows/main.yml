@@ -9,7 +9,7 @@ concurrency:
 
 jobs:
   build-mac:
-    runs-on: macos-13-arm64
+    runs-on: macos-latest-arm64
     steps:    
     - name: Checkout source
       uses: actions/checkout@v4 
